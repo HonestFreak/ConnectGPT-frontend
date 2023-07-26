@@ -43,7 +43,7 @@ const SignIn = () => {
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
               <div className="mb-5.5 inline-block" >
-                <img src='../src/images/product/signin.svg'/>
+                <img src='/images/product/signin.svg'/>
               </div>
 
               <p className="2xl:px-20">

@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { CirclePicker } from 'react-color';
 import CodeBlock from "./codeblock";
-import Onesvg from "../svg/one";
-import Twosvg from "../svg/two";
-import Threesvg from "../svg/three";
-import Foursvg from "../svg/four";
-import Fivesvg from "../svg/five";
-import Sixsvg from "../svg/six";
+import Onesvg from "../../images/svg/one";
+import Twosvg from "../../images/svg/two";
+import Threesvg from "../../images/svg/three";
+import Foursvg from "../../images/svg/four";
+import Fivesvg from "../../images/svg/five";
+import Sixsvg from "../../images/svg/six";
 import FloatingButton from "../../components/Pop";
 
 const Integrate = () => {

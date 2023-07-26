@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import onesvg from '../pages/svg/one.tsx';
-import Onesvg from '../pages/svg/one.tsx';
-import Twosvg from '../pages/svg/two.tsx';
-import Threesvg from '../pages/svg/three.tsx';
-import Foursvg from '../pages/svg/four.tsx';
-import Fivesvg from '../pages/svg/five.tsx';
-import Sixsvg from '../pages/svg/six.tsx';
+import onesvg from '../images/svg/one.tsx';
+import Onesvg from '../images/svg/one.tsx';
+import Twosvg from '../images/svg/two.tsx';
+import Threesvg from '../images/svg/three.tsx';
+import Foursvg from '../images/svg/four.tsx';
+import Fivesvg from '../images/svg/five.tsx';
+import Sixsvg from '../images/svg/six.tsx';
 const FloatingButton = (props) => {
   const [isDivVisible, setDivVisibility] = useState(false);
 

@@ -48,7 +48,7 @@ const SignUp = () => {
             <div className="py-17.5 px-26 text-center">
 
             <div className="mb-5.5 inline-block" >
-                <img src='../src/images/product/signup.svg' alt='logo'/>
+                <img src='/images/product/signup.svg' alt='logo'/>
               </div>
 
               <p className="2xl:px-20">
