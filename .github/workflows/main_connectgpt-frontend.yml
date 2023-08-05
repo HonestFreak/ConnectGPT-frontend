@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'connectgpt-frontend'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5921256D4AF8407B8301772A2D7E1891 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB6E885B06794529A639F7E219619265 }}
           package: .
