@@ -17,6 +17,7 @@ const Integrate = () => {
   const [uitype , setuitype] = useState('1');
   const [color, setcolor] = useState('#fff');
   const [icon, seticon] = useState(1);
+  const accessToken = localStorage.getItem('accessToken');
 
   const colorchange = async (color,event) => {
     console.log(color.hex);
@@ -42,7 +43,13 @@ const Integrate = () => {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch('/api/users/userinfo');
+      const response = await fetch(`/api/users/userinfo`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+        },
+      });
       const data = await response.json();
       setUserInfo(data)
       console.log(data);

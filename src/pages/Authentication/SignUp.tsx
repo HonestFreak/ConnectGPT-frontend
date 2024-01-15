@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import useColorMode from '../../hooks/useColorMode';
 
 const SignUp = () => {
+  useColorMode();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
+  const [otpsent, setotpsent] = useState(false);
   
-
   const handleSubmit = async () => {
     if(password !== retypePassword){
       alert("Both Passwords don't match");
@@ -20,7 +22,7 @@ const SignUp = () => {
     };
 
     try {
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -30,7 +32,9 @@ const SignUp = () => {
 
       if (response.ok) {
         // User signup successful
-        console.log('User signup successful');
+        console.log('OTP sent');
+        setotpsent(true);
+
       } else {
         // User signup failed
         console.error('User signup failed');
@@ -44,6 +48,21 @@ const SignUp = () => {
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
+
+        {/* success message  */}
+  {  otpsent &&    (<div className="absolute flex-wrap items-center bg-[#1B1B24]/[0.6] w-full h-full z-40 ">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[1400%]
+                  border-l-6 z-50 border-r-6 border-[#34D399] px-7 py-8 shadow-md bg-[#1B1B24] md:p-9">
+            <div className="w-full">
+              <h5 className="mb-3 text-lg font-semibold text-black dark:text-[#34D399] ">
+              ✅ Verification link sent to your email
+              </h5>
+              <p className="text-base leading-relaxed text-body">
+                Please verify your email to login
+              </p>
+            </div>
+          </div> </div>)}
+
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
 

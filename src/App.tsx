@@ -4,11 +4,13 @@ import { Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard/home';
 import UI from './pages/UI/basic';
 import UI2 from './pages/UI/dark';
-
+import Alert from './pages/UiElements/Alerts';
+import Credit from './pages/Credit'
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
 import Loader from './common/Loader';
 import Integrate from './pages/UI/integrate';
+import Verify from './pages/Authentication/Verify';
 
 const Chart = lazy(() => import('./pages/Chart'));
 const FormElements = lazy(() => import('./pages/Form/FormElements'));
@@ -39,12 +41,25 @@ function App() {
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
         <Route
+            path="/verify"
+            element={<Verify />}
+          />
+        <Route
             path="/ui/1/*"
             element={
               <Suspense fallback={<Loader />}>
                 <UI />
               </Suspense>
             } />
+
+          <Route
+            path="/alert"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Alert />
+              </Suspense>
+            } />
+
          <Route
             path="/ui/2/*"
             element={
@@ -71,6 +86,16 @@ function App() {
               </Suspense>
             }
           />
+
+          <Route
+            path="/credit"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Credit/>
+              </Suspense>
+            } />
+
+          
           <Route
             path="/feedback"
             element={
@@ -79,6 +104,7 @@ function App() {
               </Suspense>
             }
           />
+          
           <Route
             path="/forms/form-elements"
             element={

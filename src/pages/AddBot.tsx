@@ -53,7 +53,7 @@ const addbot = () => {
       if (createBotResponse.ok) {
         setSuccess(true);
         setFormData({
-          llm_model: "openai-gpt-3.5-turbo",
+          llm_model: "openai gpt-4 credit",
           name: "",
           personality: "",
           intent: "",
@@ -188,12 +188,12 @@ const addbot = () => {
                   <select value={formData['llm_model']} name='llm_model'
                         onChange={handleInputChange} 
                   className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
-                    <option value="openai-gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
-                        <option value="openai-gpt-3.5-turbo-16k	">OpenAI GPT-3.5 Turbo-16k</option>
-                        <option value="openai-gpt-3.5-turbo-0613">OpenAI GPT-3.5 Turbo-0613</option>
-                        <option value="azure">Azure</option>
-                        <option value="cohere">Cohere</option>
-                        <option value="palm">Palm</option>
+                        <option value="openai gpt-4 credit">OpenAI GPT-4 (from credits)</option>
+                        <option value="openai gpt-4-32k credit">OpenAI GPT-4-32k (from credits)</option>
+                        <option value="openai gpt-3.5-turbo credit">OpenAI GPT-3.5 Turbo (from credits)</option>
+                        <option value="openai gpt-4">OpenAI GPT-4</option>
+                        <option value="openai gpt-4-32k">OpenAI GPT-4-32k</option>
+                        <option value="openai gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
                   </select>
                 </div>
               </div>

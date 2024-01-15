@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 
@@ -10,13 +9,19 @@ const adddoc = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [pdf, setpdf] = useState("");
   const [sitemap, setsitemap] = useState("");
+  const accessToken = localStorage.getItem('accessToken');
 
   const sitemapmethod = async () => {
     setloading(true)
     try {
       const response = await fetch(`/api/chat/sitemapmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
-      &sitemap=${sitemap}`, {
-        method: 'POST',
+      &sitemap=${sitemap}`
+      , {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+        },
       });
        if (response.ok) {
         setsitemap("");
@@ -39,7 +44,11 @@ const adddoc = () => {
     try {
       const response = await fetch(`/api/chat/pdfmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
       &pdfurl=${pdf}`, {
-        method: 'POST',
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+        },
       });
       
       if (response.ok) {
@@ -75,6 +84,7 @@ const adddoc = () => {
       , {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(url_list),
@@ -99,6 +109,7 @@ const adddoc = () => {
         &text=${text}`, {
           method: 'POST',
           headers: {
+            'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
           }
         });
@@ -118,7 +129,13 @@ const adddoc = () => {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch('/api/users/userinfo');
+        const response = await fetch(`/api/users/userinfo`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Accept': 'application/json',
+          },
+        });
         const data = await response.json();
         if (response.ok) {
         console.log(data);

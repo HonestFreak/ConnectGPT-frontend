@@ -6,9 +6,18 @@ const Chats = () => {
   const [currentbot, setcurrentbot] = useState(0)
   const [userInfo, setUserInfo] = useState(null);
   const [chats, setChats] = useState(JSON.parse("{}"));
+  const accessToken = localStorage.getItem('accessToken');
+
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch('/api/users/userinfo');
+      const response = await fetch('/api/users/userinfo'
+      ,{
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
       const data = await response.json();
       const temp = JSON.parse(data.bots[currentbot]["chat_history"])
       setUserInfo(data);

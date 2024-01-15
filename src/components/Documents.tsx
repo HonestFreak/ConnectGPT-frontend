@@ -6,10 +6,17 @@ const Docs = () => {
   const [docIndex, setDocIndex] = useState(0);
   const [currentBot, setCurrentBot] = useState(0);
   const [userInfo, setUserInfo] = useState(null);
+  const accessToken = localStorage.getItem('accessToken');
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch('/api/users/userinfo');
+      const response = await fetch(`/api/users/userinfo`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+        },
+      });
       const data = await response.json();
       if (response.ok) {
         setUserInfo(data);
@@ -26,7 +33,8 @@ const Docs = () => {
       const response = await fetch(`/api/collections/getcol/?bot_id=${userInfo["bots"][currentBot]['id']}`, {
         method: 'GET',
         headers: {
-          Accept: 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
         },
       });
 

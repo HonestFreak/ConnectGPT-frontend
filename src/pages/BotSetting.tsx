@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const Settings = () => {
   const [userInfo, setUserInfo] = useState(null);
-  const [currentbot, setcurrentbot] = useState(0);
+  const [currentBot, setCurrentBot] = useState(0);
   const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -13,10 +13,15 @@ const Settings = () => {
     llm_model: "",
     emd_model: "",
     creativity: "",
-    api_key: {openai: '', vertexai: '', cohere: '', azurebase: '', azurekey: '', azuredeploy: ''
-              }
+    api_key: {
+      openai: '',
+      azurebase: '',
+      azurekey: '',
+      azuredeploy: '',
+      cohere: '',
+    },
   });
-  
+  const accessToken = localStorage.getItem('accessToken');
 
   const updateBot = async (id, data) => {
     try {
@@ -24,10 +29,12 @@ const Settings = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
         },
         body: JSON.stringify(data),
       });
-      
+
       if (response.ok) {
         console.log('Bot updated successfully');
         setSuccess(true);
@@ -39,70 +46,58 @@ const Settings = () => {
     }
   };
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    if(name.includes("api")) {
+    if (name.includes("api")) {
       setFormData((prevFormData) => ({
         ...prevFormData,
         api_key: {
           ...prevFormData.api_key,
-          [name.slice(0,-3)]: value,
+          [name]: value,
         },
       }));
-      console.log(formData)
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
     }
-    else
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value, 
-    }));
-    console.log(formData)
-  }
+  };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    updateBot(userInfo.bots[currentbot].id, formData);
-    console.log(formData);
-  }
+    updateBot(userInfo.bots[currentBot].id, formData);
+  };
 
-  const botchange = (e) => {
-    console.log("Bot changed");
-    setcurrentbot(e.target.selectedIndex);
-    console.log(e.target.selectedIndex);
+  const botChange = (e) => {
+    const selectedIndex = e.target.selectedIndex;
+    setCurrentBot(selectedIndex);
     setFormData((prevFormData) => ({
       ...prevFormData,
-      name: userInfo.bots[e.target.selectedIndex].name,
-      personality: userInfo.bots[e.target.selectedIndex].personality,
-      intent: userInfo.bots[e.target.selectedIndex].intent,
-      no_answer: userInfo.bots[e.target.selectedIndex].no_answer,
-      llm_model: userInfo.bots[e.target.selectedIndex].llm_model,
-      emd_model: userInfo.bots[e.target.selectedIndex].emd_model,
-      creativity: userInfo.bots[e.target.selectedIndex].creativity,
-      api_key: userInfo.bots[e.target.selectedIndex].api_key,
+      name: userInfo.bots[selectedIndex].name,
+      personality: userInfo.bots[selectedIndex].personality,
+      intent: userInfo.bots[selectedIndex].intent,
+      no_answer: userInfo.bots[selectedIndex].no_answer,
+      llm_model: userInfo.bots[selectedIndex].llm_model,
+      emd_model: userInfo.bots[selectedIndex].emd_model,
+      creativity: userInfo.bots[selectedIndex].creativity,
+      api_key: userInfo.bots[selectedIndex].api_key,
     }));
     setSuccess(false);
   };
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch('/api/users/userinfo');
+      const response = await fetch(`/api/users/userinfo`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+        },
+      });
       const data = await response.json();
       setUserInfo(data);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        name: data.bots[currentbot].name,
-        personality: data.bots[currentbot].personality,
-        intent: data.bots[currentbot].intent,
-        no_answer: data.bots[currentbot].no_answer,
-        llm_model: data.bots[currentbot].llm_model,
-        emd_model: data.bots[currentbot].emd_model,
-        creativity: data.bots[currentbot].creativity,
-        api_key: data.bots[currentbot].api_key,
-      }));
       console.log(data);
-      if (data.bots.length === 0) {
-        window.location.href = "/addbot";
-      }
     } catch (error) {
       console.error('Error fetching user info:', error);
     }
@@ -111,10 +106,11 @@ const Settings = () => {
   useEffect(() => {
     fetchUserInfo();
   }, []);
-
-  if (userInfo != null) {
+  
+  if (userInfo && userInfo.bots) {
     return (
       <>
+      
         <div className="mx-auto max-w-270">
           <Breadcrumb pageName="Settings" />
 
@@ -127,8 +123,8 @@ const Settings = () => {
                   </h3>
                   <select
                     name="bot"
-                    value={currentbot}
-                    onChange={botchange}
+                    value={currentBot}
+                    onChange={botChange}
                     className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
                   >
                     {userInfo.bots.map((item, index) => (
@@ -235,12 +231,12 @@ const Settings = () => {
                         onChange={handleInputChange}
                         className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
                       >
-                        <option value="openai-gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
-                        <option value="openai-gpt-3.5-turbo-16k	">OpenAI GPT-3.5 Turbo-16k</option>
-                        <option value="openai-gpt-3.5-turbo-0613">OpenAI GPT-3.5 Turbo-0613</option>
-                        <option value="azure">Azure</option>
-                        <option value="cohere">Cohere</option>
-                        <option value="palm">Palm</option>
+                        <option value="openai gpt-4 credit">OpenAI GPT-4 (from credits)</option>
+                        <option value="openai gpt-4-32k credit">OpenAI GPT-4-32k (from credits)</option>
+                        <option value="openai gpt-3.5-turbo credit">OpenAI GPT-3.5 Turbo (from credits)</option>
+                        <option value="openai gpt-4">OpenAI GPT-4</option>
+                        <option value="openai gpt-4-32k">OpenAI GPT-4-32k</option>
+                        <option value="openai gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
                       </select>
                     </div>
                   </div>
@@ -433,11 +429,12 @@ const Settings = () => {
         </div>
       </div>
     </div>
-  </>
-);
-}
 
-return null; 
+      </>
+    );
+  }
+
+  return null;
 };
 
 export default Settings;

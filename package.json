@@ -14,7 +14,10 @@
     "url": "https://connectgpt.tech"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.11.1",
     "apexcharts": "^3.37.0",
+    "firebase": "^10.5.0",
+    "firebaseui": "^6.1.0",
     "fs": "^0.0.1-security",
     "jsvectormap": "^1.5.1",
     "langchain": "^0.0.109",
@@ -25,6 +28,7 @@
     "react-apexcharts": "^1.4.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
+    "react-google-button": "^0.7.2",
     "react-router-dom": "^6.8.1",
     "sort-by": "^0.0.2"
   },
