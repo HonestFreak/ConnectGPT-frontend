@@ -7,8 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        // target: 'https://connectgpt-backend.azurewebsites.net/', // Replace with the actual URL of your FastAPI backend
-         target: 'http://127.0.0.1:8000/', 
+         target: 'https://connectgpt-backend.azurewebsites.net/', 
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

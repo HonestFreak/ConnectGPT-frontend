@@ -10,59 +10,6 @@ const SignIn = () => {
   const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleGoogle = async (credentialResponse) => {
-    try {
-      const googleToken = credentialResponse.credential;
-      const url = `/api/users/googleauth?google_token=${googleToken}`; //verify google token
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-
-      
-      const { user_email } = await response.json();
-
-        // ------------------------------------------
-
-      const response2 = await fetch('/api/login/token/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          username: user_email,
-          password: googleToken,
-          grant_type: 'password',
-          scope: '',
-        }),
-      });
-
-      if (!response2.ok) {
-        throw new Error('Login failed');
-      }
-      
-      console.log("logged in")
-      const { access_token } = await response2.json();
-      localStorage.setItem('accessToken', access_token);
-      localStorage.setItem('username', user_email);
-      window.location.href = '/';
-      console.log(access_token)
-      console.log(user_email)
-    
-
-    } catch (error) {
-      console.error(error);
-    }  
-  };
-  
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -72,11 +19,12 @@ const SignIn = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
+          'accept': 'application/json',
         },
         body: new URLSearchParams({
           username,
           password,
-          grant_type: 'password',
+          grant_type: '',
           scope: '',
         }),
       });
@@ -121,16 +69,6 @@ const SignIn = () => {
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 Sign In to ConnectGPT
               </h2>
-
-              <GoogleLogin
-                  onSuccess={credentialResponse => {
-                    console.log(credentialResponse);
-                    handleGoogle(credentialResponse)
-                  }}
-                  onError={() => {
-                    console.log('Login Failed');
-                  }}
-                /> <br/>
 
               <form onSubmit={handleSubmit}> 
                 <div className="mb-4">
