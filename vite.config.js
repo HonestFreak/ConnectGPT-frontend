@@ -7,9 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-         target: 'https://connectgpt-backend.azurewebsites.net/', 
+         target: 'https://connectgpt-backend.azurewebsites.net', 
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+        // replaces /api with '' in the request path
       },
     },
   },

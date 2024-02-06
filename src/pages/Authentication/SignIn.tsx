@@ -15,7 +15,7 @@ const SignIn = () => {
 
     try {
       // Send a POST request to the FastAPI router
-      const response = await fetch('/api/login/token/', {
+      const response = await fetch('/api/login/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
