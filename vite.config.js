@@ -15,3 +15,6 @@ export default defineConfig({
     },
   },
 })
+export default {
+  base: './',
+};
