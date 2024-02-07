@@ -10,7 +10,6 @@ export default defineConfig({
          target: 'https://connectgpt-backend.azurewebsites.net', 
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
-        // replaces /api with '' in the request path
       },
     },
   },
