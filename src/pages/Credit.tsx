@@ -10,7 +10,7 @@ const Credit = () => {
   const loaddata = async () => {
     try {
       const accessToken = localStorage.getItem('accessToken');
-      const response = await fetch('/api/users/userinfo', {
+      const response = await fetch('connectgpt-backend.azurewebsites.net/users/userinfo', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Credit = () => {
     try {
         const accessToken = localStorage.getItem('accessToken');
 
-        const transfer = await fetch(`/api/credit/transfer?amount=${transferamount}&bot_id=${bot_id}`, {
+        const transfer = await fetch(`connectgpt-backend.azurewebsites.net/credit/transfer?amount=${transferamount}&bot_id=${bot_id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Credit = () => {
     try {
         const accessToken = localStorage.getItem('accessToken');
 
-        const createCheckoutSessionResponse = await fetch(`/api/credit/create-checkout-session?amount=${creditrange}`, {
+        const createCheckoutSessionResponse = await fetch(`connectgpt-backend.azurewebsites.net/credit/create-checkout-session?amount=${creditrange}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

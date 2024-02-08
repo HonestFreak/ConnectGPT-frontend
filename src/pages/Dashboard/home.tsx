@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`/api/users/dashboard`, {
+      const response = await fetch(`connectgpt-backend.azurewebsites.net/users/dashboard`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,

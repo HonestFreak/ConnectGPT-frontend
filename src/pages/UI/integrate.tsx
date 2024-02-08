@@ -43,7 +43,7 @@ const Integrate = () => {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch(`/api/users/userinfo`, {
+      const response = await fetch(`connectgpt-backend.azurewebsites.net/users/userinfo`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,

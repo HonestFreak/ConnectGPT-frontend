@@ -12,7 +12,7 @@ const Verify = () => {
     const email = urlParams.get('email');
     const otp = urlParams.get('otp');
     try {
-      const response = await fetch(`/api/users/verify/${email}/${otp}`, {
+      const response = await fetch(`connectgpt-backend.azurewebsites.net/users/verify/${email}/${otp}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
