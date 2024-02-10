@@ -43,7 +43,7 @@ const Integrate = () => {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch(`api.azurewebsites.net/users/userinfo`, {
+      const response = await fetch(`api/users/userinfo`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,

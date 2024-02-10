@@ -15,7 +15,7 @@ const Feedback = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`api.azurewebsites.net/users/feedback?feedback=${feedback}`, {
+      const response = await fetch(`api/users/feedback?feedback=${feedback}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

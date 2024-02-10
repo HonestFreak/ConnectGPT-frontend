@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`api.azurewebsites.net/users/dashboard`, {
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/users/dashboard`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -31,7 +31,7 @@ const Dashboard = () => {
       console.log('Dashboard data:', data);
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
-      window.location.href = '/auth/signin';
+      // window.location.href = '/auth/signin';
     }
   };
 

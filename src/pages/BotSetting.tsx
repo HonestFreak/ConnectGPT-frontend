@@ -25,7 +25,7 @@ const Settings = () => {
 
   const updateBot = async (id, data) => {
     try {
-      const response = await fetch(`api.azurewebsites.net/bots/update/${id}`, {
+      const response = await fetch(`api/bots/update/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const Settings = () => {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch(`api.azurewebsites.net/users/userinfo`, {
+      const response = await fetch(`api/users/userinfo`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,

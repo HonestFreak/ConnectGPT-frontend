@@ -22,7 +22,7 @@ const SignUp = () => {
     };
 
     try {
-      const response = await fetch('api.azurewebsites.net/users/signup', {
+      const response = await fetch('api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

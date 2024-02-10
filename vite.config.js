@@ -15,7 +15,7 @@ export default defineConfig({
       '/api': {
         target: 'https://backend-connectgpt.azurewebsites.net',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/backend-connetgpt.azurewebsites.net/, ''),
+        pathRewrite: {'^/api': '/'}
       },
     },
     port: 8080,
