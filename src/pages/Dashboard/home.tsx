@@ -31,7 +31,7 @@ const Dashboard = () => {
       console.log('Dashboard data:', data);
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
-      // window.location.href = '/auth/signin';
+      window.location.href = '/auth/signin';
     }
   };
 
