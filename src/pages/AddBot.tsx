@@ -41,7 +41,7 @@ const addbot = () => {
     try {
       const accessToken = localStorage.getItem('accessToken');
 
-      const createBotResponse = await fetch('connectgpt-backend.azurewebsites.net/bots/create-bot/', {
+      const createBotResponse = await fetch('api.azurewebsites.net/bots/create-bot/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

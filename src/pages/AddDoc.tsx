@@ -14,7 +14,7 @@ const adddoc = () => {
   const sitemapmethod = async () => {
     setloading(true)
     try {
-      const response = await fetch(`connectgpt-backend.azurewebsites.net/chat/sitemapmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
+      const response = await fetch(`api.azurewebsites.net/chat/sitemapmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
       &sitemap=${sitemap}`
       , {
         method: 'GET',
@@ -42,7 +42,7 @@ const adddoc = () => {
   const pdfmethod = async () => {
     setloading(true)
     try {
-      const response = await fetch(`connectgpt-backend.azurewebsites.net/chat/pdfmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
+      const response = await fetch(`api.azurewebsites.net/chat/pdfmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
       &pdfurl=${pdf}`, {
         method: 'GET',
         headers: {
@@ -80,7 +80,7 @@ const adddoc = () => {
   setloading(true)
   const url_list = url.split('\n');
     try {
-      const response = await fetch(`connectgpt-backend.azurewebsites.net/chat/urlmethod/?bot_id=${userInfo["bots"][currentbot]['id']}`
+      const response = await fetch(`api.azurewebsites.net/chat/urlmethod/?bot_id=${userInfo["bots"][currentbot]['id']}`
       , {
         method: 'POST',
         headers: {
@@ -105,7 +105,7 @@ const adddoc = () => {
   const textmethod = async () => {
     setloading(true)
       try {
-        const response = await fetch(`connectgpt-backend.azurewebsites.net/chat/textmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
+        const response = await fetch(`api.azurewebsites.net/chat/textmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
         &text=${text}`, {
           method: 'POST',
           headers: {
@@ -129,7 +129,7 @@ const adddoc = () => {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`connectgpt-backend.azurewebsites.net/users/userinfo`, {
+        const response = await fetch(`api.azurewebsites.net/users/userinfo`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${accessToken}`,
