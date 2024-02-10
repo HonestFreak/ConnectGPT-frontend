@@ -2,12 +2,10 @@
   "name": "ConnectGPT Admin",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
-  "homepage": ".",
-  
+  "type": "module",  
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "author": {

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import useColorMode from '../../hooks/useColorMode';
 import { useState } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
 
 
 
@@ -15,7 +14,7 @@ const SignIn = () => {
 
     try {
       // Send a POST request to the FastAPI router
-      const response = await fetch('connectgpt-backend.azurewebsites.net/login/token', {
+      const response = await fetch('https://backend-connectgpt.azurewebsites.net/login/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
