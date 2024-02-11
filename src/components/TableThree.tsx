@@ -10,7 +10,7 @@ const Chats = () => {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch('api/users/userinfo'
+      const response = await fetch('https://backend-connectgpt.azurewebsites.net/users/userinfo'
       ,{
         method: 'GET',
         headers: {

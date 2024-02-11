@@ -10,7 +10,7 @@ const Docs = () => {
 
   const fetchUserInfo = async () => {
     try {
-      const response = await fetch(`api/users/userinfo`, {
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/users/userinfo`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -30,7 +30,7 @@ const Docs = () => {
 
   const fetchCols = async () => {
     try {
-      const response = await fetch(`api/collections/getcol/?bot_id=${userInfo["bots"][currentBot]['id']}`, {
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/collections/getcol/?bot_id=${userInfo["bots"][currentBot]['id']}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -121,7 +121,7 @@ const Docs = () => {
                       <input
                         type="submit"
                         onClick={() =>
-                          fetch(`api/collections/delindex/${docIndex[index]}`)
+                          fetch(`https://backend-connectgpt.azurewebsites.net/collections/delindex/${docIndex[index]}`)
                         }
                         className="inline-flex items-center justify-end rounded-md bg-primary py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
                         value="Delete"

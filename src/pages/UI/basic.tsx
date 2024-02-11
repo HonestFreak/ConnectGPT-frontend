@@ -41,7 +41,7 @@ const UI = () => {
 
   const sendApiRequest = async () => {
     try {
-      const response = await fetch(`api/chat/query/${searchParams.get("bot_id")}?query=${query}
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/query/${searchParams.get("bot_id")}?query=${query}
                         &convo_id=${String(ipAddress) + String(date)}`);
       if (!response.ok) {
         throw new Error("API request failed");

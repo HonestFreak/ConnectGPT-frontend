@@ -15,7 +15,7 @@ const Feedback = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`api/users/feedback?feedback=${feedback}`, {
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/users/feedback?feedback=${feedback}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
