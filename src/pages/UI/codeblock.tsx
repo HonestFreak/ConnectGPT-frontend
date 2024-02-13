@@ -426,7 +426,7 @@ const CodeBlock = (props) => {
           >
             {/* iframe code */}
              <iframe
-              src="http://localhost:5173/ui/1"
+              src="http://connectgpt.tech/ui/1"
               style={{ border: 'none', color: '#ffffff' }}
               name="myiFrame"
               height="100%"
