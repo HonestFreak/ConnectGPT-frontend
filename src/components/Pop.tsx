@@ -58,7 +58,7 @@ const FloatingButton = (props) => {
         >
           {/* iframe code */}
            <iframe
-            src={`http://connectgpt.tech/ui/${props.uitype}?bot_id=${props.currentbot}&title=${props.title}`}
+            src={`https://connectgpt.tech/ui/${props.uitype}?bot_id=${props.currentbot}&title=${props.title}`}
             style={{ border: 'none', color: '#ffffff' }}
             name="myiFrame"
             height="100%"
