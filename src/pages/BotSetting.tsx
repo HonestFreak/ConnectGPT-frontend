@@ -98,6 +98,7 @@ const Settings = () => {
       const data = await response.json();
       setUserInfo(data);
       console.log(data);
+      if(!response.ok) window.location.href = '/auth/signin';
     } catch (error) {
       console.error('Error fetching user info:', error);
     }

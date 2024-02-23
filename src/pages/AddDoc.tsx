@@ -141,6 +141,9 @@ const adddoc = () => {
         console.log(data);
         setUserInfo(data);
       }
+      else{
+        window.location.href = '/auth/signin';
+      }
       } catch (error) {
         console.error('Error fetching user info:', error);
       }

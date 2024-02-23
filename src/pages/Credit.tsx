@@ -26,6 +26,7 @@ const Credit = () => {
         console.log(bots)
       } else {
         console.error('Failed to fetch credit');
+       window.location.href = '/auth/signin';
       }
     } catch (error) {
       console.error('An error occurred', error);
@@ -149,7 +150,7 @@ const Credit = () => {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b  border-stroke py-4 px-4 dark:border-strokedark">
                 <h3 className="font-mediumtext-black dark:text-white p-3">
-                🪙 Buy Credits
+                💎 Buy Credits
                 </h3>
                 </div>
 
