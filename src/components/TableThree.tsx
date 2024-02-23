@@ -41,8 +41,7 @@ const Chats = () => {
     console.log(e.target.selectedIndex)
   }
 
-
-  if(!userInfo) return null;
+  if(userInfo) {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="border-b  border-stroke py-4 px-4 dark:border-strokedark">
@@ -113,14 +112,30 @@ const Chats = () => {
 
                 
               </td>
-              
-            </tr> ))}
-            
+            </tr> ))} 
           </tbody>
         </table>
+        {Object.keys(chats).length==0 && <> 
+            <div className='flex space-x-2 justify-center items-center h-20'>
+            🗿 No chats yet
+            </div>
+            </>}
       </div>
     </div>
-  );
+  )}
+  else {
+  return(<div class='flex space-x-2 justify-center items-center h-screen'>
+  <div class='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.3s]'>
+    🔴
+  </div>
+  <div class='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.15s]'>
+    🟡
+  </div>
+  <div class='h-8 w-8 rounded-full animate-bounce'>
+    🔵
+  </div>
+</div>)}
+    
 };
 
 export default Chats;

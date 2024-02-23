@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import 'tailwindcss/tailwind.css';
 
 const Docs = () => {
   const [docs, setDocs] = useState(null);
@@ -22,6 +22,9 @@ const Docs = () => {
         setUserInfo(data);
         console.log(data);
         console.log(userInfo);
+      }
+      else {
+        window.location.href = '/auth/signin';
       }
     } catch (error) {
       console.error('Error fetching user info:', error);
@@ -97,7 +100,7 @@ const Docs = () => {
                   Documents
                 </th>
                 <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                  Actions
+                  Actions 
                 </th>
               </tr>
             </thead>
@@ -132,11 +135,30 @@ const Docs = () => {
               ))}
             </tbody>
           </table>
+          {
+            docs["documents"].length === 0 && <> 
+            <div className='flex space-x-2 justify-center items-center h-20'>
+            🗿 No data fed yet
+            </div>
+            </>
+          }
         </div>
       </div>
     );
   } else {
-    return null; // Render loading or placeholder UI
+    return <>
+      <div class='flex space-x-2 justify-center items-center h-screen'>
+          <div class='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.3s]'>
+            🔴
+          </div>
+          <div class='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.15s]'>
+            🟡
+          </div>
+          <div class='h-8 w-8 rounded-full animate-bounce'>
+            🔵
+          </div>
+      </div>
+    </>; 
   }
 };
 

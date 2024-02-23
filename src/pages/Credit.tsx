@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const Credit = () => {
   const [creditrange, setCreditRange] = useState(50);
-  const [currentCredit, setCurrentCredit] = useState(0);
+  const [currentCredit, setCurrentCredit] = useState('Loading...');
   const [bots, setBots] = useState([]);
   const [transferamount, setTransferAmount] = useState(0);
   const [bot_id, setBotId] = useState(0);
@@ -21,7 +21,7 @@ const Credit = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data)
-        setCurrentCredit(data.credits);
+        setCurrentCredit('$' + data.credits);
         setBots(data.bots);
         console.log(bots)
       } else {
@@ -88,7 +88,7 @@ const Credit = () => {
  return (
     <>
       <div className="mx-auto max-w-270">
-        <div className='text-3xl'> $ {currentCredit} </div>
+        <div className='text-3xl'> {currentCredit} </div>
         <div className='text-md'> Total Credits </div> <br/>
         
         <div className="grid grid-cols-4 gap-8">
@@ -205,7 +205,8 @@ const Credit = () => {
             </div>
           </div>
 
-        { bots.map((bot) => (
+        { bots.length ?  
+        bots.map((bot) => (
           <div className="flex flex-col">
          
   
@@ -229,7 +230,19 @@ const Credit = () => {
   
        
         </div>
-          )) }
+          )) : <div> 
+             <div class='flex space-x-2 justify-center items-center h-50'>
+          <div class='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.3s]'>
+            🔴
+          </div>
+          <div class='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.15s]'>
+            🟡
+          </div>
+          <div class='h-8 w-8 rounded-full animate-bounce'>
+            🔵
+          </div>
+      </div>
+            </div>}
       
     </div>
 
