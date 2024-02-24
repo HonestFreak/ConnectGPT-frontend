@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import useColorMode from '../../hooks/useColorMode';
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
   useColorMode();
@@ -8,13 +9,20 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
-  const [otpsent, setotpsent] = useState(false);
+  const [passcheck, setPasscheck] = useState(true);
+
   
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
     if(password !== retypePassword){
-      alert("Both Passwords don't match");
-      return;
+      Swal.fire({
+        icon: "error",
+        title: "Passwords don't match",
+        text: "Please make sure both passwords match",
+      });
     }
+
+    else {
     const user = {
       username,
       email,
@@ -31,38 +39,25 @@ const SignUp = () => {
       });
 
       if (response.ok) {
-        // User signup successful
-        console.log('OTP sent');
-        setotpsent(true);
-
+        Swal.fire({
+          icon: "success",
+          title: "Welcome to ConnectGPT!",
+          text: "Verification link sent to your email. Please verify your email to continue",
+          
+        });
       } else {
-        // User signup failed
         console.error('User signup failed');
       }
     } catch (error) {
       console.error('An error occurred during signup:', error);
     }
+  }
   };
 
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
-
-        {/* success message  */}
-  {  otpsent &&    (<div className="absolute flex-wrap items-center bg-[#1B1B24]/[0.6] w-full h-full z-40 ">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[1400%]
-                  border-l-6 z-50 border-r-6 border-[#34D399] px-7 py-8 shadow-md bg-[#1B1B24] md:p-9">
-            <div className="w-full">
-              <h5 className="mb-3 text-lg font-semibold text-black dark:text-[#34D399] ">
-              ✅ Verification link sent to your email
-              </h5>
-              <p className="text-base leading-relaxed text-body">
-                Please verify your email to login
-              </p>
-            </div>
-          </div> </div>)}
-
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
 
@@ -193,14 +188,22 @@ const SignUp = () => {
 
                 <div className="mb-6">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    Re-type Password
+                    Re-type Password { !passcheck && <span className='italic mt-2 text-sm text-meta-1'>(passwords do not match)</span>}
                   </label>
                   <div className="relative">
                     <input
                       type="password"
                       placeholder="Re-enter your password"
                       value={retypePassword}
-                      onChange={(event) => setRetypePassword(event.target.value)}
+                      onChange={(event) => {
+                        setRetypePassword(event.target.value)
+                        if(event.target.value !== password){
+                          setPasscheck(false)
+                        }
+                        else {
+                          setPasscheck(true)
+                        }
+                      }}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
 
