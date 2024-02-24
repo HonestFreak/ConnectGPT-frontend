@@ -11,7 +11,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
   const [passcheck, setPasscheck] = useState(true);
-  const [signin, setSignin] = useState('Sign in');
+  const [signin, setSignin] = useState('Create Account');
   
   const handleSubmit = async (e) => {
     e.preventDefault(); 
@@ -236,7 +236,7 @@ const SignUp = () => {
                 <div className="mb-5">
                   <input
                     type="submit"
-                    value="Create account"
+                    value={signin}
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   />
                 </div>
@@ -282,7 +282,7 @@ const SignUp = () => {
                   <p>
                     Already have an account?{' '}
                     <Link to="/auth/signin" className="text-primary">
-                      {signin}
+                      Sign In 
                     </Link>
                   </p>
                 </div>
