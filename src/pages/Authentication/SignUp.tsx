@@ -3,7 +3,6 @@ import { useState } from 'react';
 import useColorMode from '../../hooks/useColorMode';
 import Swal from 'sweetalert2'
 import confetti from 'canvas-confetti'; 
-import { set } from 'firebase/database';
 
 const SignUp = () => {
   useColorMode();
