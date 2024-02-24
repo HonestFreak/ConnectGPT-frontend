@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useColorMode from '../../hooks/useColorMode';
 import Swal from 'sweetalert2'
 import confetti from 'canvas-confetti'; 
+import { set } from 'firebase/database';
 
 const SignUp = () => {
   useColorMode();
@@ -11,10 +12,11 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
   const [passcheck, setPasscheck] = useState(true);
-
+  const [signin, setSignin] = useState('Sign in');
   
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+    setSignin('Setting up your account...');
     if(password !== retypePassword){
       Swal.fire({
         icon: "error",
@@ -82,7 +84,7 @@ const SignUp = () => {
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    Username
+                    Name
                   </label>
                   <div className="relative">
                     <input
@@ -281,7 +283,7 @@ const SignUp = () => {
                   <p>
                     Already have an account?{' '}
                     <Link to="/auth/signin" className="text-primary">
-                      Sign in
+                      {signin}
                     </Link>
                   </p>
                 </div>
