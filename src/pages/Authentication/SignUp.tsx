@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import useColorMode from '../../hooks/useColorMode';
 import Swal from 'sweetalert2'
+import confetti from 'canvas-confetti'; 
 
 const SignUp = () => {
   useColorMode();
@@ -39,11 +40,11 @@ const SignUp = () => {
       });
 
       if (response.ok) {
+        confetti({ spread : 190 });
         Swal.fire({
           icon: "success",
           title: "Welcome to ConnectGPT!",
-          text: "Verification link sent to your email. Please verify your email to continue",
-          
+          text: "Verification link has been sent to your email. Please verify your email to continue",
         });
       } else {
         console.error('User signup failed');
