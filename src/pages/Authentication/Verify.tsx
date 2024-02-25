@@ -15,7 +15,7 @@ const Verify = () => {
       const response = await fetch(`https://backend-connectgpt.azurewebsites.net/users/verify/${email}/${otp}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       });
       if(response.ok){
