@@ -1,7 +1,15 @@
 const Loader = () => {
   return (
-    <div className="flex h-screen items-center justify-center bg-white">
-      <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
+    <div className='flex bg-meta-4 space-x-2 justify-center items-center h-screen'>
+          <div className='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.3s]'>
+            🔴
+          </div>
+          <div className='h-8 w-8 rounded-full animate-bounce [animation-delay:-0.15s]'>
+            🟡
+          </div>
+          <div className='h-8 w-8 rounded-full animate-bounce'>
+            🔵
+        </div>
     </div>
   );
 };
