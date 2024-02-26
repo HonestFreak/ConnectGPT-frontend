@@ -6,7 +6,7 @@ return (
 <div className="text-justify p-5">
 
 
-<h2 className="justify-center py-4"><strong>🟢 Terms and Conditions</strong></h2>
+<h2 className="justify-center w-full flex"><strong>🟢 Terms and Conditions</strong></h2>
 
 <p> Welcome to ConnectGPT! </p>
 

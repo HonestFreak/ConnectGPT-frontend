@@ -12,6 +12,8 @@ import Loader from './common/Loader';
 import Integrate from './pages/UI/integrate';
 import Verify from './pages/Authentication/Verify';
 import Terms from './pages/T&C';
+import Cancellation from './pages/Cancellation';
+import PrivacyPolicy from './pages/Privacy';
 
 const Chart = lazy(() => import('./pages/Chart'));
 const FormElements = lazy(() => import('./pages/Form/FormElements'));
@@ -167,6 +169,22 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Terms />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/privacy"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PrivacyPolicy />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/cancel"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Cancellation />
               </Suspense>
             }
           />
