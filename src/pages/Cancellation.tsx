@@ -40,8 +40,8 @@ return (
     </ul>
 
     <p className="mb-4">
-      To request a cancellation, please contact us at <span className="font-bold">[your email address]</span>
-      {' '}with the subject line "<span className="font-bold">Cancellation Request - [Your Order Number]</span>".
+      To request a cancellation, please contact us at <span className="font-bold">admin@connectgpt.tech</span>
+      {' '}with the subject line "<span className="font-bold">Cancellation Request - Your email id </span>".
     </p>
 
     <p className="mb-4">
