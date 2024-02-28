@@ -1,8 +1,13 @@
 import Breadcrumb from '../components/Breadcrumb';
 import { useState } from 'react';
+import Personality from '../components/PersonalitySuggestions';
+import Swal from 'sweetalert2';
+import Intention from '../components/IntentionSuggestions';
+import NoAnswer from '../components/NoAnswerSuggestions';
 
 const addbot = () => {
   const [success, setSuccess] = useState(false);
+  const [ adding , setAdding] = useState(false);
   const [formData, setFormData] = useState({
     llm_model: "openai-gpt-3.5-turbo",
     name: "",
@@ -14,6 +19,15 @@ const addbot = () => {
     api_key: {openai: '', vertexai: '', cohere: '', azurebase: '', azurekey: '', azuredeploy: ''},
     creativity: 0.5
   });
+
+  function addPersonality(new_personality) {
+    handleInputChange({target: {name: 'personality', value: formData['personality'] + new_personality}});
+    console.log(formData)
+  }
+
+  function addIntention(new_intention) {
+    handleInputChange({target: {name: 'intent', value: formData['intent'] + new_intention}});
+  }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -37,7 +51,7 @@ const addbot = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setAdding(true);
     try {
       const accessToken = localStorage.getItem('accessToken');
 
@@ -52,6 +66,13 @@ const addbot = () => {
       });
       if (createBotResponse.ok) {
         setSuccess(true);
+        setAdding(false);
+        Swal.fire({
+          title: 'Bot Created Successfully',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         setFormData({
           llm_model: "openai gpt-4 credit",
           name: "",
@@ -89,7 +110,6 @@ const addbot = () => {
               </div>
 
               <div className="p-7">
-                <form onSubmit={handleSubmit} id="myForm">
                   <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                     <div className="w-full">
                       <label
@@ -120,6 +140,8 @@ const addbot = () => {
                       Personality
                     </label>
                     <div className="relative">
+                    <Personality change = {addPersonality} />
+
                       <span className="absolute left-4.5 top-4">
                       </span>
 
@@ -143,6 +165,7 @@ const addbot = () => {
                       Intent
                     </label>
                     <div className="relative">
+                      <Intention change = {addIntention} />
                       <span className="absolute left-4.5 top-4">
                       </span>
 
@@ -165,6 +188,7 @@ const addbot = () => {
                       Message when no result is found
                     </label>
                     <div className="relative">
+                      <NoAnswer change = {addIntention} />
                       <span className="absolute left-4.5 top-4">
                       </span>
 
@@ -239,13 +263,14 @@ const addbot = () => {
                     <button
                       className="flex justify-center rounded bg-success py-2 px-6 font-medium text-gray hover:shadow-1"
                       type="submit"
-                      onSubmit={handleSubmit}
+                      onClick={(e) => {
+                        console.log("clicked");
+                        handleSubmit(e)
+                      }}
                     >
-                      + Add Bot
+                      { adding ? <>Adding ...</> : <>+ Add Bot</>}
                     </button>
                   </div>
-
-                  </form>
       
       { success && (
          <div className="mb-3  inline-flex py-5 text-success" role="alert">
@@ -271,9 +296,10 @@ const addbot = () => {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <form onSubmit={handleSubmit}>
               <div className="border-b  border-stroke py-4 px-4 dark:border-strokedark">
-                <h3 className="font-mediumtext-black dark:text-white p-3">
+                <h3 className=" font-mediumtext-black dark:text-white p-3">
                   🔑 API Keys
                 </h3>
+               <div className='text-sm font-light p-3 w-full text-center'> Add if you plan to use your own API keys </div>
 
                 <div className="w-full space-y-4">
                   <label
