@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useEffect } from "react"
+import Swal from "sweetalert2";
 
 const adddoc = () => {
   const [loading , setloading ] = useState(false);
@@ -17,7 +18,7 @@ const adddoc = () => {
       const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/sitemapmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
       &sitemap=${sitemap}`
       , {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Accept': 'application/json',
@@ -25,7 +26,12 @@ const adddoc = () => {
       });
        if (response.ok) {
         setsitemap("");
-        alert("Data uploaded successfully!")
+        Swal.fire({
+          title: 'Data uploaded successfully!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         console.error('Error uploading data:', response.statusText);
       }
@@ -44,7 +50,7 @@ const adddoc = () => {
     try {
       const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/pdfmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
       &pdfurl=${pdf}`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Accept': 'application/json',
@@ -53,7 +59,12 @@ const adddoc = () => {
       
       if (response.ok) {
         setpdf("");
-        alert("Data uploaded successfully!")
+        Swal.fire({
+          title: 'Data uploaded successfully!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         console.error('Error uploading data:', response.statusText);
       }
@@ -92,7 +103,12 @@ const adddoc = () => {
       
       if (response.ok) {
         setURL("");
-        alert("Data uploaded successfully!")
+        Swal.fire({
+          title: 'Data uploaded successfully!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         console.error('Error uploading data:', response.statusText);
       }
@@ -117,7 +133,12 @@ const adddoc = () => {
         if (response.ok) {
           console.log('Data uploaded successfully!');
           setText("");
-          alert("Data uploaded successfully!")
+          Swal.fire({
+            title: 'Data uploaded successfully!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+          })
         } else {
           console.error('Error uploading data:', response.statusText);
         }
