@@ -1,9 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const UI2 = () => {
+const UI = () => {
   const [searchParams] = useSearchParams();
-  const answer = searchParams.get("title");
+  const answer = searchParams.get("title") || "";
+  const greetings = searchParams.get("greetings") || "😊 hi, I am your 24X7 personal AI assistant. Feel free to ask me any questions.";
+  const [isloading, setIsLoading] = useState(false);
 
   const [query, setQuery] = useState("");
   const [messages, setMessages] = useState([]);
@@ -23,6 +25,7 @@ const UI2 = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
+      setIsLoading(true);
       const newMessage = String(query);
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -48,6 +51,7 @@ const UI2 = () => {
       // Process the API response data here
       console.log("API response:", data);
       const newMessage = String(data);
+      setIsLoading(false);
       setMessages((prevMessages) => [
         ...prevMessages,
         { content: newMessage, sender: "bot" }, // Identify the sender as "bot"
@@ -68,7 +72,7 @@ const UI2 = () => {
           <div className="py-1 px-1 text-center">{answer} AI Assistant</div>
 
           <div className="pr-8 text-white rounded-r-xl rounded-tl-xl bg-meta-4 px-5 py-2 min-w-[10%] max-w-[90%] w-fit">
-            😊 hi, I am your 24X7 personal AI assistant. Feel free to ask me any questions.
+            {greetings}
           </div>
 
           {messages.map((message, index) => (
@@ -81,15 +85,21 @@ const UI2 = () => {
               <div
                 className={`text-white ${
                   message.sender === "user" ? 
-                  "bg-meta-4 rounded-l-xl rounded-tr-xl bg-[#01452c]" : 
-                  "bg-meta-4 rounded-r-xl rounded-tl-xl bg-[#01452c]"
+                  "bg-meta-4 rounded-l-xl rounded-tr-xl" : 
+                  "bg-meta-4 rounded-r-xl rounded-tl-xl "
                 } px-5 py-2 min-w-[10%] max-w-[90%] w-fit`}
-              > 
+              >
                 {message.content}
               </div>
             </div>
             </div>
           ))}
+          {isloading && (
+          <div className='px-2 flex space-x-2 text-sm items-center'>
+          <div className='w-3 h-3 bg-meta-4 rounded-full animate-bounce [animation-delay:-0.3s]'/>
+          <div className='w-3 h-3 bg-meta-4 rounded-full animate-bounce [animation-delay:-0.15s]'/>
+          <div className='w-3 h-3 bg-meta-4 rounded-full animate-bounce'/>
+      </div>)}
         </div>
         <input
           className="w-full rounded border border-stroke py-3 pl-5 pr-4.5 focus:border-primary focus-visible:outline-none border-strokedark bg-meta-4 text-white focus:border-primary"
@@ -105,4 +115,4 @@ const UI2 = () => {
   );
 };
 
-export default UI2;
+export default UI;

@@ -121,7 +121,7 @@ const Integrate = () => {
                 </h3> 
     <div className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
      <FloatingButton bgcolor={color} icon={icon} uitype={uitype} currentbot={userInfo.bots[currentbot]['id']} title={title}/>
-     <CodeBlock  bgcolor={color} icon={icon} uitype={uitype}/>
+     <CodeBlock botid={userInfo.bots[currentbot]['id']}  bgcolor={color} icon={icon} uitype={uitype}/>
 
 </div>
     </>

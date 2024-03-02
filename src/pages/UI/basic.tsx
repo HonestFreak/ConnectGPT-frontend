@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 
 const UI = () => {
   const [searchParams] = useSearchParams();
-  const answer = searchParams.get("title");
+  const answer = searchParams.get("title") || "";
+  const greetings = searchParams.get("greetings") || "😊 hi, I am your 24X7 personal AI assistant. Feel free to ask me any questions.";
   const [isloading, setIsLoading] = useState(false);
 
   const [query, setQuery] = useState("");
@@ -71,7 +72,7 @@ const UI = () => {
           <div className="py-1 px-1 text-center">{answer} AI Assistant</div>
 
           <div className="pr-8 text-white rounded-r-xl rounded-tl-xl bg-[#01452c] px-5 py-2 min-w-[10%] max-w-[90%] w-fit">
-            😊 hi, I am your 24X7 personal AI assistant. Feel free to ask me any questions.
+            {greetings}
           </div>
 
           {messages.map((message, index) => (
@@ -93,7 +94,12 @@ const UI = () => {
             </div>
             </div>
           ))}
-          {isloading && (<p className="text-success"> Typing ... </p>)}
+          {isloading && (
+          <div className='px-2 flex space-x-2 text-sm items-center'>
+          <div className='w-3 h-3 bg-success rounded-full animate-bounce [animation-delay:-0.3s]'/>
+          <div className='w-3 h-3 bg-success rounded-full animate-bounce [animation-delay:-0.15s]'/>
+          <div className='w-3 h-3 bg-success rounded-full animate-bounce'/>
+      </div>)}
         </div>
         <input
           className="w-full rounded border border-stroke py-3 pl-5 pr-4.5 focus:border-primary focus-visible:outline-none border-strokedark bg-meta-4 text-white focus:border-primary"
