@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 
 const Credit = () => {
+  const queryParams = new URLSearchParams(window.location.search)
+  const selected_bot = queryParams.get("bot_id") || -1
   const [creditrange, setCreditRange] = useState(50);
   const [currentCredit, setCurrentCredit] = useState('Loading...');
   const [bots, setBots] = useState([]);
   const [transferamount, setTransferAmount] = useState(0);
-  const [bot_id, setBotId] = useState(0);
+  const [bot_id, setBotId] = useState(selected_bot);
 
   const loaddata = async () => {
     try {
@@ -107,13 +109,18 @@ const Credit = () => {
                   Transfer to 
                 </label>
                 <div className="relative z-20 bg-white dark:bg-form-input">
-                  <select onChange={(e) => setBotId(parseInt(e.target.value))}
-                  className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
-                    <option value=''>Select Bot</option>
-                    {bots.map((bot) => (
-                      <option value={bot.id}>{bot.name}</option>
-                    ))}
-                  </select>
+              {selected_bot && bots && 
+              <select value={bot_id}
+              onChange={(e) => {
+                setBotId(parseInt(e.target.value))
+                console.log(e.target.value)
+              }}
+              className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
+                <option value={-1} key={-1}>Select Bot</option>
+                {bots.map((bot) => (
+                  <option value={bot.id} key={bot.id}>{bot.id} | {bot.name}</option>
+                ))}
+              </select>}
                 </div>
               </div>
 

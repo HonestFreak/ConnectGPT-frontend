@@ -1,9 +1,12 @@
+import Swal from 'sweetalert2';
 import Breadcrumb from '../components/Breadcrumb';
 import { useEffect, useState } from 'react';
 
 const Settings = () => {
+  const queryParams = new URLSearchParams(window.location.search)
+  const selected_bot = queryParams.get("bot_id") || -1
   const [userInfo, setUserInfo] = useState(null);
-  const [currentBot, setCurrentBot] = useState(0);
+  const [currentBot, setCurrentBot] = useState(selected_bot); // bot id
   const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -38,6 +41,12 @@ const Settings = () => {
       if (response.ok) {
         console.log('Bot updated successfully');
         setSuccess(true);
+        Swal.fire({
+          icon: 'success',
+          title: 'Bot updated successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         console.error('Error updating bot:', response.statusText);
       }
@@ -66,12 +75,13 @@ const Settings = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateBot(userInfo.bots[currentBot].id, formData);
+    updateBot(currentBot, formData);
   };
 
   const botChange = (e) => {
-    const selectedIndex = e.target.selectedIndex;
-    setCurrentBot(selectedIndex);
+    setCurrentBot(e.target.value);
+    const id = e.target.value
+    const selectedIndex = userInfo.bots.findIndex((bot) => bot.id === parseInt(id));
     setFormData((prevFormData) => ({
       ...prevFormData,
       name: userInfo.bots[selectedIndex].name,
@@ -125,12 +135,15 @@ const Settings = () => {
                   <select
                     name="bot"
                     value={currentBot}
-                    onChange={botChange}
+                    onChange={(e) => {
+                      setCurrentBot(e.target.value);
+                      botChange(e)
+                    }}
                     className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
                   >
                     {userInfo.bots.map((item, index) => (
-                      <option name={item.name} key={index} value={index}>
-                        {item.name}
+                      <option name={item.name} key={item.id} value={item.id}>
+                       {item.id} | {item.name}
                       </option>
                     ))}
                   </select>

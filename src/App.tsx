@@ -14,6 +14,7 @@ import Verify from './pages/Authentication/Verify';
 import Terms from './pages/T&C';
 import Cancellation from './pages/Cancellation';
 import PrivacyPolicy from './pages/Privacy';
+import BotTable from './components/TableOne';
 
 const Chart = lazy(() => import('./pages/Chart'));
 const FormElements = lazy(() => import('./pages/Form/FormElements'));
@@ -30,11 +31,7 @@ const AddDocs = lazy(() => import('./pages/AddDoc'))
 const Feedback = lazy(() => import('./pages/Feedback'))
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
+  const [loading, setLoading] = useState<boolean>(false);
 
   return loading ? (
     <Loader />
@@ -196,22 +193,16 @@ function App() {
               </Suspense>
             }
           />
+
           <Route
-            path="/ui/alerts"
+            path="/bottable"
             element={
               <Suspense fallback={<Loader />}>
-                <Alerts />
+                <BotTable />
               </Suspense>
             }
           />
-          <Route
-            path="/ui/buttons"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Buttons />
-              </Suspense>
-            }
-          />
+         
         </Route>
       </Routes>
     </>
