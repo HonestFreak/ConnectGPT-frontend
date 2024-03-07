@@ -1,6 +1,3 @@
-
-const Onesvg = () => {
-  return (
     <svg
           xmlns="http://www.w3.org/2000/svg"
           width="50"
@@ -50,7 +47,3 @@ const Onesvg = () => {
           <path d="M218.384 211.069L218.384 175.543 197.486 211.069z"></path>
         </g>
       </g></svg>
-  );
-};
-
-export default Onesvg;

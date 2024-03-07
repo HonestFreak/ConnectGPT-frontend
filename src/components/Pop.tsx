@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import onesvg from '../images/svg/one.tsx';
+import { useState } from 'react';
 import Onesvg from '../images/svg/one.tsx';
 import Twosvg from '../images/svg/two.tsx';
 import Threesvg from '../images/svg/three.tsx';
@@ -35,17 +34,18 @@ const FloatingButton = (props) => {
         onClick={handleButtonClick}
       >
          {/* Your Icon Here */}
-         {props.icon == "1" ? <Onesvg /> : ''}
-         {props.icon == "2" ? <Twosvg /> : ''}
-         {props.icon == "3" ? <Threesvg /> : ''}
-         {props.icon == "4" ? <Foursvg /> : ''}
-         {props.icon == "5" ? <Fivesvg /> : ''}
-         {props.icon == "6" ? <Sixsvg /> : ''}
+         {props.icon == "1" ? <Onesvg /> : null}
+         {props.icon == "2" ? <Twosvg /> : null}
+         {props.icon == "3" ? <Threesvg /> : null}
+         {props.icon == "4" ? <Foursvg /> : null}
+         {props.icon == "5" ? <Fivesvg /> : null}
+         {props.icon == "6" ? <Sixsvg /> : null}
        
       </button>
-      {isDivVisible && (
+      {(
         <div
           style={{
+            display: isDivVisible ? 'block' : 'none',
             position: 'fixed',
             bottom: '20px',
             right: '100px',
