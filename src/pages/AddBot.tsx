@@ -16,7 +16,7 @@ const addbot = () => {
     no_answer: "",
     emd_model: "default",
     is_active: true,
-    api_key: {openai: '', vertexai: '', cohere: '', azurebase: '', azurekey: '', azuredeploy: ''},
+    api_key: {openai: '', gemini: ''},
     creativity: 0.5
   });
 
@@ -218,6 +218,7 @@ const addbot = () => {
                         <option value="openai gpt-4">OpenAI GPT-4</option>
                         <option value="openai gpt-4-32k">OpenAI GPT-4-32k</option>
                         <option value="openai gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
+                        <option value="gemini pro">Google Gemini</option>
                   </select>
                 </div>
               </div>
@@ -293,9 +294,9 @@ const addbot = () => {
         </div>
 
       <div className="col-span-5 xl:col-span-2">
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          <div className="rounded-sm bg-white shadow-default dark:bg-boxdark">
             <form onSubmit={handleSubmit}>
-              <div className="border-b  border-stroke py-4 px-4 dark:border-strokedark">
+              <div className="py-4 px-4 ">
                 <h3 className=" font-mediumtext-black dark:text-white p-3">
                   🔑 API Keys
                 </h3>
@@ -323,69 +324,20 @@ const addbot = () => {
                     className="mb-3 block text-sm font-medium text-black dark:text-white"
                     htmlFor="fullName"
                   >
-                    Azure Base URL
+                    Gemini API Key
                   </label>
                   <div className="relative">
                     <span className="absolute left-4.5 top-4"></span>
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="password"
-                      id="azurebase"
-                      name="azurebaseapi" value={formData.api_key.azurebase}
+                      id="gemini"
+                      name="gemini" value={formData.api_key.gemini}
                       onChange={handleInputChange}
                     />
                   </div>
 
-                  <label
-                    className="mb-3 block text-sm font-medium text-black dark:text-white"
-                    htmlFor="fullName"
-                  >
-                    Azure Key
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4.5 top-4"></span>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="password"
-                      id="azurekey"
-                      name="azurekeyapi" value={formData.api_key.azurekey}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <label
-                    className="mb-3 block text-sm font-medium text-black dark:text-white"
-                    htmlFor="fullName"
-                  >
-                    Azure Deployment Name
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4.5 top-4"></span>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="password"
-                      id="azuredeploy"
-                      name="azuredeployapi" value={formData.api_key.azuredeploy}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <label
-                    className="mb-3 block text-sm font-medium text-black dark:text-white"
-                    htmlFor="fullName"
-                  >
-                    Cohere API key
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4.5 top-4"></span>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="password"
-                      value={formData.api_key.cohere}
-                      onChange={handleInputChange}
-                      name='cohereapi'
-                   />
-                  </div> </div>
+                 </div>
               </div>
               <div className="flex justify-end gap-4.5 py-3 px-3">
               </div> 

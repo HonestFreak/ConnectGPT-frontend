@@ -18,10 +18,7 @@ const Settings = () => {
     creativity: "",
     api_key: {
       openai: '',
-      azurebase: '',
-      azurekey: '',
-      azuredeploy: '',
-      cohere: '',
+      gemini: '',
     },
   });
   const accessToken = localStorage.getItem('accessToken');
@@ -364,68 +361,17 @@ const Settings = () => {
                     className="mb-3 block text-sm font-medium text-black dark:text-white"
                     htmlFor="fullName"
                   >
-                    Azure Base URL
+                    Gemini API key
                   </label>
                   <div className="relative">
                     <span className="absolute left-4.5 top-4"></span>
                     <input
                       className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                       type="password"
-                      id="azurebase"
-                      name="azurebaseapi" value={formData.api_key.azurebase}
+                      id="gemini"
+                      name="gemini" value={formData.api_key.gemini}
                       onChange={handleInputChange}
                     />
-                  </div>
-
-                  <label
-                    className="mb-3 block text-sm font-medium text-black dark:text-white"
-                    htmlFor="fullName"
-                  >
-                    Azure Key
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4.5 top-4"></span>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="password"
-                      id="azurekey"
-                      name="azurekeyapi" value={formData.api_key.azurekey}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <label
-                    className="mb-3 block text-sm font-medium text-black dark:text-white"
-                    htmlFor="fullName"
-                  >
-                    Azure Deployment Name
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4.5 top-4"></span>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="password"
-                      id="azuredeploy"
-                      name="azuredeployapi" value={formData.api_key.azuredeploy}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <label
-                    className="mb-3 block text-sm font-medium text-black dark:text-white"
-                    htmlFor="fullName"
-                  >
-                    Cohere API key
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4.5 top-4"></span>
-                    <input
-                      className="w-full rounded border border-stroke bg-gray py-3 pl-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                      type="password"
-                      value={formData.api_key.cohere}
-                      onChange={handleInputChange}
-                      name='cohereapi'
-                   />
                   </div>
 
                 </div>
