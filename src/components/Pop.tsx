@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import Onesvg from '../images/svg/one.tsx';
-import Twosvg from '../images/svg/two.tsx';
-import Threesvg from '../images/svg/three.tsx';
-import Foursvg from '../images/svg/four.tsx';
-import Fivesvg from '../images/svg/five.tsx';
-import Sixsvg from '../images/svg/six.tsx';
+
 const FloatingButton = (props) => {
   const [isDivVisible, setDivVisibility] = useState(false);
 
   const handleButtonClick = () => {
     setDivVisibility(!isDivVisible);
   };
+
+  let greetings = ""
+  if (props.greetings) {
+    greetings = props.greetings
+  }
+
 
   return (
     <div>
@@ -34,12 +35,12 @@ const FloatingButton = (props) => {
         onClick={handleButtonClick}
       >
          {/* Your Icon Here */}
-         {props.icon == "1" ? <Onesvg /> : null}
-         {props.icon == "2" ? <Twosvg /> : null}
-         {props.icon == "3" ? <Threesvg /> : null}
-         {props.icon == "4" ? <Foursvg /> : null}
-         {props.icon == "5" ? <Fivesvg /> : null}
-         {props.icon == "6" ? <Sixsvg /> : null}
+         {props.icon == "1" ? <img src='https://connectgpt.tech/images/svg/one.svg'/> : null}
+         {props.icon == "2" ? <img src='https://connectgpt.tech/images/svg/two.svg'/> : null}
+         {props.icon == "3" ? <img src='https://connectgpt.tech/images/svg/three.svg'/> : null}
+         {props.icon == "4" ? <img src='https://connectgpt.tech/images/svg/four.svg'/> : null}
+         {props.icon == "5" ? <img src='http://localhost:8080/images/svg/five.svg'/>: null}
+         {props.icon == "6" ? <img src='http://localhost:8080/images/svg/six.svg'/> : null}
        
       </button>
       {(
@@ -58,12 +59,12 @@ const FloatingButton = (props) => {
         >
           {/* iframe code */}
            <iframe
-            src={`https://connectgpt.tech/ui/${props.uitype}?bot_id=${props.currentbot}&title=${props.title}`}
+            src={`https://connectgpt.tech/ui/${props.uitype}?bot_id=${props.currentbot}&title=${props.title}${greetings}`}
             style={{ border: 'none', color: '#ffffff' }}
             name="myiFrame"
             height="100%"
             width="100%"
-          ></iframe>
+          />
         </div>
       )}
     </div>
