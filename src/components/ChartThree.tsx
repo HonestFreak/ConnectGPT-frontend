@@ -60,7 +60,7 @@ const ChartThree: React.FC = (prop) => {
       <div className="mb-3 justify-between gap-4 sm:flex">
         <div>
           <h5 className="text-xl font-semibold text-black dark:text-white">
-          🤖 Query Distribution by Bots
+          💬 Query Distribution by Bots
           </h5>
         </div>
         <div>
