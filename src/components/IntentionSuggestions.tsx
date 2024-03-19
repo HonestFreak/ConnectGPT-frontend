@@ -13,7 +13,8 @@ const Intention = ({change}) => {
              "Make user feel the urgent need of our product. ",
             "Empathy approach to make user feel that we understand their problem and we are here to help. ",
             "Make user feel that we are the best in the market. ",
-             "Multiple Yes questions to make user feel that they are making the right decision. ",],
+             "Multiple Yes questions to make user feel that they are making the right decision. ",
+             "Create competition between users to make them feel that they are missing out. ",],
   };
 
   const [selectedintention, setSelectedintention] = useState(null);

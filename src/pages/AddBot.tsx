@@ -29,6 +29,10 @@ const addbot = () => {
     handleInputChange({target: {name: 'intent', value: formData['intent'] + new_intention}});
   }
 
+  function addNoAnswer(new_noanswer) {
+    handleInputChange({target: {name: 'no_answer', value: formData['no_answer'] + new_noanswer}});
+  }
+
   function handleInputChange(event) {
     const { name, value } = event.target;
     if(name.includes("api")) {
@@ -188,7 +192,7 @@ const addbot = () => {
                       Message when no result is found
                     </label>
                     <div className="relative">
-                      <NoAnswer change = {addIntention} />
+                      <NoAnswer change = {addNoAnswer} />
                       <span className="absolute left-4.5 top-4">
                       </span>
 
