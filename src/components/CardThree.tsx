@@ -11,7 +11,7 @@ const CardThree = (props) => {
           <h4 className="text-title-md font-bold text-black dark:text-white">
             {props.propvalue}
           </h4>
-          <span className="text-sm font-medium">Pages Indexed</span>
+          <span className="text-sm font-medium">MB Trained</span>
         </div>
 
         

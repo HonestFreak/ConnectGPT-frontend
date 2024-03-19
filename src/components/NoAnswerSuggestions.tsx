@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 const NoAnswer = ({change}) => {
   const noAnswerList = {
-    "Characters": ["Ayanokoji", "Skamoto", ],
-    "Marketing": ["Person who is  at marketing", "Person who is good at marketing"],
-    "Sales": ["Person who is  at sales", "Person who is good at sales"],
-    "Finance": ["Person who is  at finance", "Person who is good at finance"],
-    "HR": ["Person who is  at HR", "Person who is good at HR"],
-    "Documentation": ["Person who is  at documentation", "Person who is good at documentation"],
+    "Sorry": [" say 'sorry I am unable to answer this question' ", 
+              " tell user that you don't know the answer ", 
+              " apologize user and ask them to contact to our email : xyz@gmail.com ",],
+    "Leads": [" Ask user for their email or phone number and tell him that our team will contact them soon. ", 
+             ]
+   
   };
 
   const [selectednoAnswer, setSelectednoAnswer] = useState(null);
@@ -37,7 +37,7 @@ const NoAnswer = ({change}) => {
             <div className="flex flex-col space-y-2 p-3">
               {noAnswerList[selectednoAnswer].map((value) => (
                  <div key={value}
-                onClick={(e) => {change(value)}} className="p-2 border rounded-sm hover:bg-success text-sm font-medium text-black dark:text-white">
+                onClick={(e) => {change(value)}} className="cursor-pointer p-2 border rounded-sm hover:bg-[#097969] text-sm font-medium text-black dark:text-white">
                   + {value}
                 </div>
               ))}

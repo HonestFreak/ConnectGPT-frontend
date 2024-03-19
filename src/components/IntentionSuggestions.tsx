@@ -2,12 +2,18 @@ import React, { useState } from "react";
 
 const Intention = ({change}) => {
   const intentionList = {
-    "Characters": ["Ayanokoji", "Skamoto", ],
-    "Marketing": ["Person who is  at marketing", "Person who is good at marketing"],
-    "Sales": ["Person who is  at sales", "Person who is good at sales"],
-    "Finance": ["Person who is  at finance", "Person who is good at finance"],
-    "HR": ["Person who is  at HR", "Person who is good at HR"],
-    "Documentation": ["Person who is  at documentation", "Person who is good at documentation"],
+    "Sales": ["Make user feel that our products are better than others by comparision. ", 
+              "Landmine Approach : expose weakness of competetiors subtly. ",
+              "Persuade users to upgrade to premium membership. ", 
+              "Persuade users to buy our product. ",
+               "Try to get users to sign up for a free trial. ",
+              "Try to get user leads (email or phone) for future marketing. ",
+              "Make user feel relateable. ",
+              "Adapt to user's speaking style and need. ",
+             "Make user feel the urgent need of our product. ",
+            "Empathy approach to make user feel that we understand their problem and we are here to help. ",
+            "Make user feel that we are the best in the market. ",
+             "Multiple Yes questions to make user feel that they are making the right decision. ",],
   };
 
   const [selectedintention, setSelectedintention] = useState(null);
@@ -34,10 +40,10 @@ const Intention = ({change}) => {
         </div>
         <div className="overflow-y-auto flex-grow w-full border-l">
           {selectedintention && (
-            <div className="flex flex-col space-y-2 p-3">
+            <div className="cursor-pointer flex flex-col space-y-2 p-3">
               {intentionList[selectedintention].map((value) => (
                  <div key={value}
-                onClick={(e) => {change(value)}} className="p-2 border rounded-sm hover:bg-success text-sm font-medium text-black dark:text-white">
+                onClick={(e) => {change(value)}} className="p-2 border rounded-sm hover:bg-[#097969] text-sm font-medium text-black dark:text-white">
                   + {value}
                 </div>
               ))}
