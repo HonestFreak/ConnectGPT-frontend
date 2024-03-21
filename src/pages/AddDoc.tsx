@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import Swal from "sweetalert2";
+import pdfToText from 'react-pdftotext'
 
 const adddoc = () => {
   const [loading , setloading ] = useState(false);
@@ -11,6 +12,16 @@ const adddoc = () => {
   const [pdf, setpdf] = useState("");
   const [sitemap, setsitemap] = useState("");
   const accessToken = localStorage.getItem('accessToken');
+
+  function extractText(event) {
+    const file = event.target.files[0]
+    pdfToText(file)
+        .then((text: any) => {
+          console.log(text);
+          setpdf(text);
+        } )
+        .catch((error: any) => console.error(error))
+}
 
   const sitemapmethod = async () => {
     setloading(true)
@@ -47,9 +58,10 @@ const adddoc = () => {
 
   const pdfmethod = async () => {
     setloading(true)
+    console.log(pdf)
     try {
-      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/pdfmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
-      &pdfurl=${pdf}`, {
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/upload_docs/?id=${userInfo["bots"][currentbot]['id']}
+      &data=${pdf}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -74,10 +86,6 @@ const adddoc = () => {
     setloading(false)
   }
 
-  const handleChangePDF = (e) => {
-    setpdf(e.target.value);
-    console.log(e.target.value)
-  };
 
   const handleChangeURL = (e) => {
     setURL(e.target.value);
@@ -121,14 +129,14 @@ const adddoc = () => {
   const textmethod = async () => {
     setloading(true)
       try {
-        const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/textmethod/?bot_id=${userInfo["bots"][currentbot]['id']}
-        &text=${text}`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-          }
-        });
+        const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/upload_docs/?id=${userInfo["bots"][currentbot]['id']}
+      &data=${text}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+        },
+      });
         
         if (response.ok) {
           console.log('Data uploaded successfully!');
@@ -146,6 +154,7 @@ const adddoc = () => {
         console.error('Error uploading data:', error);
       }
       setloading(false)
+      setText("")
     };
 
     const fetchUserInfo = async () => {
@@ -293,13 +302,10 @@ const adddoc = () => {
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
                 <label className="mb-3 block text-black dark:text-white">
-                  Paste the PDF url
+                  Upload the PDF file
                 </label>
-                <input type="text" placeholder="https://example.com/example.pdf"
-                  onChange={handleChangePDF} 
-                  value = {pdf}
-                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                ></input>
+                <input type="file" accept="application/pdf" onChange={extractText}
+                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"/>
               </div>
               <button onClick={() => {pdfmethod()}}
               className="inline-flex items-center justify-center rounded-md bg-primary py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
