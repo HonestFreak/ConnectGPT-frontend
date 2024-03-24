@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useEffect } from "react";
-import FloatingButton from "../components/Pop";
+
 
 const Feedback = () => {
   const [feedback, setfeedback] = useState("");

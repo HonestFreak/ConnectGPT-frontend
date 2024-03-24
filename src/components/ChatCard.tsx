@@ -29,7 +29,7 @@ const ChatCard = () => {
               <p>
               
               <div className="p-5 mx-auto align-center">
-              <iframe className="w-full " height='250px' src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=oSa1YAjxUKt1ncwB" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <iframe className="w-full " height='250px' src="https://www.youtube.com/embed/PK3t7n51xE4?si=rbcYe5JpeiQHFUQC" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                </div>            
                
               </p></details> 

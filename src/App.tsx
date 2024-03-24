@@ -29,6 +29,7 @@ const Chats = lazy(() => import('./components/TableThree') )
 const Docs = lazy(() => import('./pages/Documents'))
 const AddDocs = lazy(() => import('./pages/AddDoc'))
 const Feedback = lazy(() => import('./pages/Feedback'))
+const Giveaway = lazy(() => import('./pages/Giveaway'))
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -74,6 +75,14 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Integrate />
+              </Suspense>
+            } />
+
+          <Route
+            path="/giveaway"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Giveaway/>
               </Suspense>
             } />
             
