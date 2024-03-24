@@ -69,7 +69,7 @@ const Giveaway = () => {
 
       <div className=" border-stroke py-4 px-6 dark:bg-black dark:border-strokedark">
       <div className="py-5">  2. Follow us on Twitter
-        <Link target="_blank" className="bg-primary p-2 ml-3 rounded-lg text-white" to="https://www.producthunt.com/products/connect-gpt#connect-gpt">
+        <Link target="_blank" className="bg-primary p-2 ml-3 rounded-lg text-white" to="https://twitter.com/ConnectGptSaas">
         Goto Twitter Page</Link>
         </div>
         <div className="py-3">

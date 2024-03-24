@@ -126,8 +126,8 @@ const Integrate = () => {
         </h3>
 
         <div className="flex relative w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
-          <button className='bg-success px-2 py-2 rounded-md text-white' onClick={() => navigator.clipboard.writeText(`https://connectgpt.tech/ui/${uitype}?bot_id=${currentbot}&title=${title}${greetings}`)}>Copy</button>
-          <div className="px-3 py-2">{`https://connectgpt.tech/ui/${uitype}?bot_id=${currentbot}&title=${title}${greetings}`}</div>
+          <button className='bg-success px-2 py-2 rounded-md text-white' onClick={() => navigator.clipboard.writeText(`https://connectgpt.tech/ui/${uitype}?bot_id=${userInfo['bots'][currentbot]['id']}&title=${title}${greetings}`)}>Copy</button>
+          <div className="px-3 py-2">{`https://connectgpt.tech/ui/${uitype}?bot_id=${userInfo['bots'][currentbot]['id']}&title=${title}${greetings}`}</div>
         </div>
 
         <h3 className="font-medium text-black dark:text-white p-3">
@@ -146,8 +146,8 @@ const Integrate = () => {
             <button value="2" onClick={() => seticon(2)} className="px-2 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/two.svg" /> </button>
             <button value="3" onClick={() => seticon(3)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/three.svg" /> </button>
             <button value="4" onClick={() => seticon(4)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/four.svg" /> </button>
-            <button value="5" onClick={() => seticon(5)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="http://localhost:8080/images/svg/five.svg" /> </button>
-            <button value="6" onClick={() => seticon(6)} className="px-4 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="http://localhost:8080/images/svg/six.svg" /> </button>
+            <button value="5" onClick={() => seticon(5)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/five.svg" /> </button>
+            <button value="6" onClick={() => seticon(6)} className="px-4 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/six.svg" /> </button>
           </div>
 
           <h3 className="text-sm text-black dark:text-white p-3">
