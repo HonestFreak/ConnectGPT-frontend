@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Dashboard from './pages/Dashboard/home';
+import Redirect from './components/Redirect';
 import UI from './pages/UI/basic';
 import UI2 from './pages/UI/dark';
 import Alert from './pages/UiElements/Alerts';
@@ -86,12 +87,20 @@ function App() {
               </Suspense>
             } />
             
-          <Route index element={<Dashboard />} />
           <Route
-            path="/profile"
+            path="/"
             element={
               <Suspense fallback={<Loader />}>
-                <Profile />
+                <Redirect />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Dashboard />
               </Suspense>
             }
           />

@@ -36,7 +36,7 @@ const SignIn = () => {
       localStorage.setItem('username', username);
       console.log(access_token)
       console.log(username)
-      window.location.href = '/';
+      window.location.href = '/dashboard';
     } catch (error) {
       console.error(error);
     }
