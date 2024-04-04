@@ -61,13 +61,16 @@ const adddoc = () => {
     setloading(true)
     console.log(pdf)
     try {
-      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/upload_docs/?id=${userInfo["bots"][currentbot]['id']}
-      &data=${pdf}`, {
+      const response = await fetch(`https://backend-connectgpt.azurewebsites.net/chat/upload_docs/?id=${userInfo["bots"][currentbot]['id']}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
-          'Accept': 'application/json',
+          Accept: 'application/json',
+          'Content-Type': 'application/json' 
         },
+        body: JSON.stringify({
+          "text": pdf
+        }),
       });
       
       if (response.ok) {
