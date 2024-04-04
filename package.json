@@ -34,7 +34,8 @@
     "react-pdftotext": "^1.1.1",
     "react-router-dom": "^6.8.1",
     "sort-by": "^0.0.2",
-    "sweetalert2": "^11.10.5"
+    "sweetalert2": "^11.10.5",
+    "tailwind-scrollbar": "^3.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

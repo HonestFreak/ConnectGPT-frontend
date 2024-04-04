@@ -68,7 +68,7 @@ const UI = () => {
   return (
     <>
       <div style={{ height: "100vh" }} className="bg-black">
-        <div className="overflow-y-auto relative space-y-3 py-3 px-3" style={{ height: "90%" }}>
+        <div className="scrollbar-thin scrollbar-track-black scrollbar-thumb-meta-4 overflow-y-auto relative space-y-3 py-3 px-3" style={{ height: "90%" }}>
           <div className="py-1 px-1 text-center">{answer} AI Assistant</div>
 
           <div className="pr-8 text-white rounded-r-xl rounded-tl-xl bg-meta-4 px-5 py-2 min-w-[10%] max-w-[90%] w-fit">
