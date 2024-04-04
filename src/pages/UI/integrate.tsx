@@ -7,10 +7,10 @@ import FloatingButton from "../../components/Pop";
 const Integrate = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [currentbot, setcurrentbot] = useState(0);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("https://connectgpt.tech/images/svg/one.svg");
   const [uitype, setuitype] = useState('1');
   const [color, setcolor] = useState('#fff');
-  const [icon, seticon] = useState(1);
+  const [icon, seticon] = useState("");
   const [greetings, setGreetings] = useState("");
   const accessToken = localStorage.getItem('accessToken');
 
@@ -141,14 +141,15 @@ const Integrate = () => {
         <h3 className="text-sm text-black dark:text-white p-3">
             Floating Button Icon
           </h3>
-          <div className="flex space-x-4">
-            <button value="1" onClick={() => seticon(1)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/one.svg" /></button>
-            <button value="2" onClick={() => seticon(2)} className="px-2 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/two.svg" /> </button>
-            <button value="3" onClick={() => seticon(3)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/three.svg" /> </button>
-            <button value="4" onClick={() => seticon(4)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/four.svg" /> </button>
-            <button value="5" onClick={() => seticon(5)} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/five.svg" /> </button>
-            <button value="6" onClick={() => seticon(6)} className="px-4 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/six.svg" /> </button>
+          <div className="flex cols-flex space-x-4">
+            <button value="1" onClick={() => seticon("https://connectgpt.tech/images/svg/one.svg")} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/one.svg" /></button>
+            <button value="2" onClick={() => seticon("https://connectgpt.tech/images/svg/two.svg")} className="px-2 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/two.svg" /> </button>
+            <button value="3" onClick={() => seticon("https://connectgpt.tech/images/svg/three.svg")} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/three.svg" /> </button>
+            <button value="4" onClick={() => seticon("https://connectgpt.tech/images/svg/four.svg")} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/four.svg" /> </button>
+            <button value="5" onClick={() => seticon("https://connectgpt.tech/images/svg/five.svg")} className="px-4 py-4 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/five.svg" /> </button>
+            <button value="6" onClick={() => seticon("https://connectgpt.tech/images/svg/six.svg")} className="px-4 py-2 rounded-full w-20 h-20 shadow-lg hover:bg-success"> <img src="https://connectgpt.tech/images/svg/six.svg" /> </button>
           </div>
+          <input type="text" className="mt-5 h-10 border rounded-md border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary" onChange={(e) => {seticon(e.target.value); console.log(icon)}} placeholder="Icon URL for custom button"></input>
 
           <h3 className="text-sm text-black dark:text-white p-3">
             Floating Button Background

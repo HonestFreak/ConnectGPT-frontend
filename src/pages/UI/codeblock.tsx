@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 
 const CodeBlock = (props) => {
@@ -6,6 +6,7 @@ const CodeBlock = (props) => {
   const [copied, setCopied] = useState(false);
   let greetings = "";
   if(props.greetings != "") {  greetings = props.greetings; }
+
 
   const handleCopyClick = () => {
     const codeElement = codeRef.current;
@@ -20,14 +21,6 @@ const CodeBlock = (props) => {
         // You can show an error message or perform any other action here
       });
   };
-
-  let icon = "one";
-  if(props.icon == "1")  icon = "one";
-  else if(props.icon == "2") icon = "two";
-  else if(props.icon == "3") icon = "three";
-  else if(props.icon == "4") icon = "four";
-  else if(props.icon == "5") icon = "five";
-  else if(props.icon == "6") icon = "six";
 
   const code = `
   // paste this code as a new tsx/jsx file and call the component in your page
@@ -64,7 +57,7 @@ const CodeBlock = (props) => {
           onClick={handleButtonClick}
         >
            {/* Your Icon Here */}
-         <img src="https://connectgpt.tech/images/svg/${icon}.svg"/>
+         <img src="${props.icon}"/>
       
         </button>
           <div

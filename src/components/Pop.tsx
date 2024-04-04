@@ -12,7 +12,6 @@ const FloatingButton = (props) => {
     greetings = props.greetings
   }
 
-
   return (
     <div>
       <button
@@ -35,13 +34,9 @@ const FloatingButton = (props) => {
         onClick={handleButtonClick}
       >
          {/* Your Icon Here */}
-         {props.icon == "1" ? <img src='https://connectgpt.tech/images/svg/one.svg'/> : null}
-         {props.icon == "2" ? <img src='https://connectgpt.tech/images/svg/two.svg'/> : null}
-         {props.icon == "3" ? <img src='https://connectgpt.tech/images/svg/three.svg'/> : null}
-         {props.icon == "4" ? <img src='https://connectgpt.tech/images/svg/four.svg'/> : null}
-         {props.icon == "5" ? <img src='https://connectgpt.tech/images/svg/five.svg'/>: null}
-         {props.icon == "6" ? <img src='https://connectgpt.tech/images/svg/six.svg'/> : null}
-       
+
+         { <img src={props.icon}/>}
+    
       </button>
       {(
         <div
