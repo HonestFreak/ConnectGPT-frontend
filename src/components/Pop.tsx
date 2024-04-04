@@ -39,8 +39,8 @@ const FloatingButton = (props) => {
          {props.icon == "2" ? <img src='https://connectgpt.tech/images/svg/two.svg'/> : null}
          {props.icon == "3" ? <img src='https://connectgpt.tech/images/svg/three.svg'/> : null}
          {props.icon == "4" ? <img src='https://connectgpt.tech/images/svg/four.svg'/> : null}
-         {props.icon == "5" ? <img src='http://localhost:8080/images/svg/five.svg'/>: null}
-         {props.icon == "6" ? <img src='http://localhost:8080/images/svg/six.svg'/> : null}
+         {props.icon == "5" ? <img src='https://connectgpt.tech/images/svg/five.svg'/>: null}
+         {props.icon == "6" ? <img src='https://connectgpt.tech/images/svg/six.svg'/> : null}
        
       </button>
       {(

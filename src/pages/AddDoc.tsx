@@ -17,6 +17,7 @@ const adddoc = () => {
     const file = event.target.files[0]
     pdfToText(file)
         .then((text: any) => {
+          text = text.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
           console.log(text);
           setpdf(text);
         } )
